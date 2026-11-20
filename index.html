@@ -4,19 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="description" content="Mundo RH - Jogo educativo interativo de Recursos Humanos, Departamento Pessoal, Cálculos Trabalhistas e Legislação CLT com funcionamento offline.">
-  <meta name="theme-color" content="#1e3a8a">
+  <meta name="theme-color" content="#120e2e">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Mundo RH">
 
-  <title>Mundo RH - Jogo Educativo de Recursos Humanos & DP</title>
+  <title>Mundo RH - Aprenda. Pratique. Evolua.</title>
 
   <!-- PWA Manifest & Favicons -->
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="./assets/icons/icon.svg">
   <link rel="apple-touch-icon" href="./assets/icons/icon-192.svg">
 
-  <!-- Estilos CSS Modulares -->
+  <!-- Estilos CSS Modulares (Paleta Academix Dark Violet) -->
   <link rel="stylesheet" href="./css/base.css">
   <link rel="stylesheet" href="./css/layout.css">
   <link rel="stylesheet" href="./css/components.css">
@@ -25,19 +25,22 @@
 </head>
 <body>
   <div class="app-root" id="app">
-    <!-- Cabeçalho Fixo Superior -->
+    <!-- Cabeçalho Fixo Superior (Estilo Academix com Avatar e Gemas) -->
     <div id="header-mount"></div>
 
-    <!-- Barra Lateral de Navegação (Drawer) -->
+    <!-- Barra Lateral de Navegação (Drawer Desktop/Mobile) -->
     <div id="sidebar-mount"></div>
 
-    <!-- Conteúdo Dinâmico das Telas e Jogos -->
+    <!-- Conteúdo Dinâmico das Telas e Fases -->
     <main class="main-wrapper" id="main-content" role="main">
       <div class="app-loading-state">
         <div class="loading-spinner"></div>
         <p>Carregando o universo do Mundo RH...</p>
       </div>
     </main>
+
+    <!-- Barra Inferior Flutuante (Mobile Floating Bottom Nav) -->
+    <div id="bottom-nav-mount"></div>
   </div>
 
   <!-- Script Principal com Módulos ES6 -->

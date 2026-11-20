@@ -1,6 +1,6 @@
 /**
  * MUNDO RH - Modelos Didáticos de Recibo de Pagamento (Holerite / Contracheque)
- * Inclui dados realistas, cálculos demonstrativos e explicações detalhadas por rubrica.
+ * Inclui modelo padrão para inspeção e modelo de AUDITORIA DE ERROS ("Descubra o Erro no Holerite").
  */
 
 export const RECEIPT_EXAMPLE_1 = {
@@ -239,3 +239,59 @@ export const RECEIPT_EXAMPLE_1 = {
     }
   ]
 };
+
+// ==========================================
+// MODELO 2: AUDITORIA DE ERROS NO HOLERITE
+// ("Descubra o que está errado neste contracheque")
+// ==========================================
+export const RECEIPT_AUDIT_CASES = [
+  {
+    id: 'audit-case-1',
+    title: 'Auditoria de Folha: Caso Carlos Eduardo',
+    employeeName: 'Carlos Eduardo Santos',
+    role: 'Operador de Produção',
+    baseSalary: 2000.00,
+    items: [
+      { code: '001', desc: 'Salário Base', ref: '30 dias', provento: 2000.00, desconto: null },
+      { code: '015', desc: 'Horas Extras 50%', ref: '10:00 h', provento: 136.40, desconto: null },
+      { code: '101', desc: 'Vale-transporte', ref: '10,00%', provento: null, desconto: 200.00, isError: true },
+      { code: '201', desc: 'INSS Mensal', ref: 'Progressivo', provento: null, desconto: 162.00 },
+      { code: '998', desc: 'Depósito FGTS', ref: '8,00%', provento: null, desconto: 170.91, isError: true }
+    ],
+    question: 'Analise com atenção os lançamentos acima. Quais são os DOIS ERROS GRAVES cometidos pelo Departamento Pessoal neste holerite?',
+    options: [
+      'O salário-base está muito baixo e o INSS deveria ser de 20%.',
+      '1º Erro: O Vale-transporte foi descontado a 10% (o teto legal é 6%). 2º Erro: O FGTS foi colocado como DESCONTO do empregado, quando é encargo patronal!',
+      'As horas extras 50% deveriam ser classificadas como desconto de atraso.',
+      'O holerite não apresenta nenhum erro legal.'
+    ],
+    correctIndex: 1,
+    explanation: 'Excelente olho clínico! Pela Lei 7.418/85, o desconto de VT é de no MÁXIMO 6% (deveria ser R$ 120, e não R$ 200). E o FGTS jamais pode ser debitado do salário do empregado: é 100% pago pela empresa à Caixa Econômica Federal!',
+    xpReward: 150,
+    gemsReward: 50
+  },
+  {
+    id: 'audit-case-2',
+    title: 'Auditoria de Folha: Caso Fernanda Lima',
+    employeeName: 'Fernanda Lima Souza',
+    role: 'Vendedora Plena',
+    baseSalary: 2500.00,
+    items: [
+      { code: '001', desc: 'Salário Base', ref: '30 dias', provento: 2500.00, desconto: null },
+      { code: '040', desc: 'Comissões de Vendas', ref: 'Metas', provento: 800.00, desconto: null },
+      { code: '101', desc: 'Vale-transporte', ref: '6,00%', provento: null, desconto: 150.00 },
+      { code: '201', desc: 'INSS Mensal', ref: 'Progressivo', provento: null, desconto: 295.00 }
+    ],
+    question: 'A vendedora Fernanda recebeu comissões de R$ 800,00 no mês. Qual direito OBRIGATÓRIO por lei o DP ESQUECEU de lançar em seus vencimentos?',
+    options: [
+      'Esqueceu de lançar o Adicional Noturno.',
+      'Esqueceu de pagar a rescisão contratual.',
+      'Esqueceu de lançar o DSR sobre Comissões (Súmula 27 do TST).',
+      'Esqueceu de cobrar a taxa do crachá funcional.'
+    ],
+    correctIndex: 2,
+    explanation: 'Exato! As comissões integram a remuneração para todos os fins e geram reflexo obrigatório no DSR (Descanso Semanal Remunerado). O DP deve pagar o DSR sobre as comissões calculando (Comissões ÷ Dias Úteis) x Domingos/Feriados!',
+    xpReward: 150,
+    gemsReward: 50
+  }
+];

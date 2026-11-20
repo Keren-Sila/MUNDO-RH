@@ -1,5 +1,5 @@
 /**
- * MUNDO RH - Estrutura de Layout e Casca da Aplicação
+ * MUNDO RH - Estrutura de Layout e Casca da Aplicação (Academix UI)
  */
 
 .app-root {
@@ -9,7 +9,7 @@
 }
 
 /* ==========================================
-   CABEÇALHO SUPERIOR (HEADER)
+   CABEÇALHO SUPERIOR (HEADER ACADEMIX)
    ========================================== */
 .app-header {
   position: sticky;
@@ -18,138 +18,189 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.25rem;
-  background-color: rgba(30, 41, 59, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  padding: 0.85rem 1.25rem;
+  background-color: rgba(14, 11, 31, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
-.header-logo {
+.user-greeting-pill {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   cursor: pointer;
   user-select: none;
 }
 
-.logo-icon {
-  font-size: 1.8rem;
-  line-height: 1;
+.user-avatar-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-.logo-text {
+.user-greeting-text {
   display: flex;
   flex-direction: column;
 }
 
-.logo-title {
-  font-size: 1.15rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: var(--text-main);
-  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.greeting-subtitle {
+  font-size: 0.68rem;
+  color: var(--text-muted);
 }
 
-.logo-subtitle {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.greeting-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
 }
 
 .header-center {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 0.75rem;
+}
+
+/* Badge de Gemas/Diamantes (Estilo Academix 💎 1257) */
+.academix-gem-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--border-radius-pill);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.15);
+}
+
+.gem-icon {
+  font-size: 0.95rem;
+}
+
+.gem-count {
+  font-weight: 800;
+  color: var(--color-gems);
+  font-size: 0.9rem;
 }
 
 .header-streak-badge {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
-  background: rgba(239, 68, 68, 0.15);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  padding: 0.35rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.85rem;
+  gap: 0.3rem;
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--border-radius-pill);
 }
 
 .streak-icon {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .streak-count {
   font-weight: 800;
-  color: #f87171;
-}
-
-.streak-label {
-  color: var(--text-muted);
-  font-size: 0.75rem;
-}
-
-.header-level-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  min-width: 150px;
-}
-
-.level-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.75rem;
-}
-
-.level-badge {
-  font-weight: 700;
-  color: var(--color-warning);
-}
-
-.level-title {
-  color: var(--text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 140px;
-}
-
-.level-bar-track {
-  width: 100%;
-  height: 6px;
-  background-color: var(--bg-surface-elevated);
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-.level-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #f59e0b 0%, #fbbf24 100%);
-  border-radius: 9999px;
-  transition: width 0.4s ease;
-}
-
-.xp-text {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  text-align: right;
+  color: var(--color-streak);
+  font-size: 0.88rem;
 }
 
 .header-right {
   display: flex;
   align-items: center;
+  gap: 0.6rem;
+}
+
+.header-level-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--bg-surface-elevated);
+  border: 1px solid var(--border-color);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--border-radius-pill);
+  cursor: pointer;
+}
+
+.header-level-pill .level-badge {
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--color-primary-neon);
+}
+
+.header-level-pill .xp-text {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================
+   BARRA INFERIOR FLUTUANTE (BOTTOM NAV PILL)
+   ========================================== */
+.bottom-floating-nav {
+  position: fixed;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.bottom-nav-pill {
+  display: flex;
+  align-items: center;
   gap: 0.5rem;
+  background: rgba(23, 19, 51, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(139, 92, 246, 0.35);
+  border-radius: var(--border-radius-pill);
+  padding: 6px 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(139, 92, 246, 0.25);
+  pointer-events: auto;
+}
+
+.bnav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.bnav-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.bnav-btn:hover {
+  color: var(--text-main);
+  background-color: rgba(139, 92, 246, 0.15);
+}
+
+.bnav-btn.active {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.6);
+  transform: translateY(-2px);
 }
 
 /* ==========================================
@@ -160,7 +211,7 @@
   top: 0;
   left: 0;
   bottom: 0;
-  width: 280px;
+  width: 290px;
   background-color: var(--bg-surface);
   border-right: 1px solid var(--border-color);
   z-index: 2000;
@@ -179,8 +230,8 @@
 .sidebar-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(10, 8, 24, 0.75);
+  backdrop-filter: blur(6px);
   z-index: 1999;
   opacity: 0;
   pointer-events: none;
@@ -200,10 +251,23 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+.sidebar-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-brand-icon {
+  font-size: 1.4rem;
+}
+
 .sidebar-brand {
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--text-main);
+  font-weight: 800;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #c084fc 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.05em;
 }
 
 .sidebar-nav {
@@ -215,12 +279,12 @@
 }
 
 .nav-section-title {
-  font-size: 0.7rem;
-  font-weight: 700;
+  font-size: 0.68rem;
+  font-weight: 800;
   text-transform: uppercase;
   color: var(--text-muted);
-  letter-spacing: 0.05em;
-  padding: 0.75rem 0.75rem 0.35rem 0.75rem;
+  letter-spacing: 0.06em;
+  padding: 0.85rem 0.75rem 0.35rem 0.75rem;
 }
 
 .nav-link {
@@ -244,8 +308,8 @@
 
 .nav-link.active {
   background-color: var(--color-primary-subtle);
-  color: var(--color-primary-light);
-  font-weight: 600;
+  color: var(--color-primary-neon);
+  font-weight: 700;
 }
 
 .nav-link.active::before {
@@ -260,19 +324,19 @@
 }
 
 .nav-link.highlight {
-  background: linear-gradient(90deg, rgba(37, 99, 235, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
-  border: 1px solid rgba(6, 182, 212, 0.3);
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%);
+  border: 1px solid rgba(168, 85, 247, 0.35);
 }
 
 .nav-tag {
   margin-left: auto;
   font-size: 0.65rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  background-color: var(--color-info);
-  color: var(--text-inverse);
-  padding: 0.15rem 0.4rem;
-  border-radius: 9999px;
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  color: #ffffff;
+  padding: 0.15rem 0.45rem;
+  border-radius: var(--border-radius-pill);
 }
 
 .sidebar-footer {
@@ -287,12 +351,12 @@
 }
 
 /* ==========================================
-   CONTEÚDO PRINCIPAL (MAIN WRAPPER)
+   CONTEÚDO PRINCIPAL
    ========================================== */
 .main-wrapper {
   flex: 1;
-  max-width: 1200px;
+  max-width: 980px;
   width: 100%;
   margin: 0 auto;
-  padding: 1.5rem 1rem 3rem 1rem;
+  padding: 1.5rem 1rem 4rem 1rem;
 }

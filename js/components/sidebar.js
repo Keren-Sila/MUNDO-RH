@@ -6,7 +6,10 @@ export function renderSidebar() {
   return `
     <aside class="app-sidebar" id="app-sidebar" aria-label="Menu Principal">
       <div class="sidebar-header">
-        <span class="sidebar-brand">🧭 Navegação</span>
+        <div class="sidebar-brand-group">
+          <span class="sidebar-brand-icon">🏢</span>
+          <span class="sidebar-brand">MUNDO RH</span>
+        </div>
         <button id="btn-close-sidebar" class="btn-icon sidebar-close-btn" aria-label="Fechar menu">&times;</button>
       </div>
 
@@ -14,18 +17,22 @@ export function renderSidebar() {
         <div class="nav-section-title">Principal</div>
         <button class="nav-link active" data-nav="home">
           <span class="nav-icon">🏠</span>
-          <span class="nav-text">Início</span>
+          <span class="nav-text">Início / Painel</span>
+        </button>
+        <button class="nav-link highlight" data-nav="phases-world-1">
+          <span class="nav-icon">🗺️</span>
+          <span class="nav-text">Fases da Folha (Mundo 1)</span>
+          <span class="nav-tag">Top!</span>
         </button>
         <button class="nav-link" data-nav="worlds">
           <span class="nav-icon">🌍</span>
-          <span class="nav-text">Mundos de Estudo</span>
+          <span class="nav-text">Todos os 6 Mundos</span>
         </button>
 
         <div class="nav-section-title">Simulador Prático</div>
-        <button class="nav-link highlight" data-nav="receipt-simulator">
+        <button class="nav-link" data-nav="receipt-simulator">
           <span class="nav-icon">🧾</span>
-          <span class="nav-text">Simulador de Holerite</span>
-          <span class="nav-tag">Top!</span>
+          <span class="nav-text">Holerite & Auditoria</span>
         </button>
 
         <div class="nav-section-title">Modalidades de Jogos</div>
@@ -35,7 +42,7 @@ export function renderSidebar() {
         </button>
         <button class="nav-link" data-nav="quiz">
           <span class="nav-icon">❓</span>
-          <span class="nav-text">Quiz Interativo</span>
+          <span class="nav-text">Quiz de RH</span>
         </button>
         <button class="nav-link" data-nav="word-completion">
           <span class="nav-icon">✏️</span>
@@ -61,16 +68,16 @@ export function renderSidebar() {
         </button>
         <button class="nav-link" data-nav="achievements">
           <span class="nav-icon">🏆</span>
-          <span class="nav-text">Conquistas & Níveis</span>
+          <span class="nav-text">Conquistas & Gemas</span>
         </button>
         <button class="nav-link" data-nav="glossary">
           <span class="nav-icon">📚</span>
-          <span class="nav-text">Glossário de RH</span>
+          <span class="nav-text">Glossário de Legislação</span>
         </button>
       </nav>
 
       <div class="sidebar-footer">
-        <span class="version-badge">Mundo RH v1.0.0 (PWA Offline)</span>
+        <span class="version-badge">Mundo RH v1.1.0 • PWA Offline</span>
       </div>
     </aside>
     <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
@@ -84,20 +91,19 @@ export function initSidebarListeners() {
   const closeBtn = document.getElementById('btn-close-sidebar');
 
   function openSidebar() {
-    sidebar.classList.add('open');
-    backdrop.classList.add('open');
+    sidebar?.classList.add('open');
+    backdrop?.classList.add('open');
   }
 
   function closeSidebar() {
-    sidebar.classList.remove('open');
-    backdrop.classList.remove('open');
+    sidebar?.classList.remove('open');
+    backdrop?.classList.remove('open');
   }
 
   if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
   if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
   if (backdrop) backdrop.addEventListener('click', closeSidebar);
 
-  // Navegação
   const links = document.querySelectorAll('.nav-link[data-nav]');
   links.forEach(link => {
     link.addEventListener('click', () => {

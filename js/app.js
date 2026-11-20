@@ -4,6 +4,7 @@
 
 import { renderHeader, initHeaderListeners, updateHeaderUI } from './components/header.js';
 import { renderSidebar, initSidebarListeners } from './components/sidebar.js';
+import { renderBottomNav, initBottomNavListeners } from './components/bottom-nav.js';
 import { NavigationRouter } from './navigation.js';
 import { storage } from './storage.js';
 
@@ -13,19 +14,27 @@ class MundoRHApp {
   }
 
   init() {
-    console.log('🚀 Inicializando Mundo RH...');
+    console.log('🚀 Inicializando Mundo RH (Academix UI)...');
 
-    // Renderiza a estrutura fixa (Header e Sidebar)
+    // Renderiza Cabeçalho Superior
     const headerContainer = document.getElementById('header-mount');
     if (headerContainer) {
       headerContainer.innerHTML = renderHeader();
       initHeaderListeners();
     }
 
+    // Renderiza Barra Lateral
     const sidebarContainer = document.getElementById('sidebar-mount');
     if (sidebarContainer) {
       sidebarContainer.innerHTML = renderSidebar();
       initSidebarListeners();
+    }
+
+    // Renderiza Barra Flutuante Inferior (Mobile Nav)
+    const bottomNavContainer = document.getElementById('bottom-nav-mount');
+    if (bottomNavContainer) {
+      bottomNavContainer.innerHTML = renderBottomNav();
+      initBottomNavListeners();
     }
 
     // Inicializa o roteador principal no container de conteúdo
@@ -54,7 +63,6 @@ class MundoRHApp {
   }
 }
 
-// Inicializa quando o DOM estiver pronto
 document.addEventListener('DOMContentLoaded', () => {
   const app = new MundoRHApp();
   app.init();

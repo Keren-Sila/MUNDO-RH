@@ -2,7 +2,7 @@
  * MUNDO RH - Service Worker para Funcionamento Offline Completo (PWA)
  */
 
-const CACHE_NAME = 'mundo-rh-v1.0.0';
+const CACHE_NAME = 'mundo-rh-v1.1.0';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -18,8 +18,10 @@ const ASSETS_TO_CACHE = [
   './js/storage.js',
   './js/components/header.js',
   './js/components/sidebar.js',
+  './js/components/bottom-nav.js',
   './js/components/modal.js',
   './js/components/progress-bar.js',
+  './js/games/phase-runner.js',
   './js/games/word-search.js',
   './js/games/quiz.js',
   './js/games/word-completion.js',
@@ -34,6 +36,7 @@ const ASSETS_TO_CACHE = [
   './js/utils/helpers.js',
   './js/utils/validation.js',
   './data/worlds.js',
+  './data/world1-phases.js',
   './data/questions.js',
   './data/glossary.js',
   './data/achievements.js',
@@ -43,17 +46,15 @@ const ASSETS_TO_CACHE = [
   './assets/icons/icon-512.svg'
 ];
 
-// Instalação do Service Worker e pré-cache de todos os arquivos
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('📦 Pré-carregando arquivos para uso offline...');
+      console.log('📦 Pré-carregando arquivos para uso offline (v1.1.0)...');
       return cache.addAll(ASSETS_TO_CACHE);
     }).then(() => self.skipWaiting())
   );
 });
 
-// Ativação e limpeza de caches antigos
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -69,7 +70,6 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Interceptação de requisições: Cache First com Fallback para Rede
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
@@ -88,7 +88,6 @@ self.addEventListener('fetch', (event) => {
         });
         return networkResponse;
       }).catch(() => {
-        // Se estiver offline e requisitar uma página html, retorna o index do cache
         if (event.request.headers.get('accept')?.includes('text/html')) {
           return caches.match('./index.html');
         }

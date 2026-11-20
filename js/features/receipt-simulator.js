@@ -1,9 +1,12 @@
 /**
  * MUNDO RH - Simulador de Recibo de Pagamento (Holerite / Contracheque Interativo)
- * Uma das funcionalidades centrais do projeto: permite explorar e compreender cada linha da folha.
+ * Inclui:
+ * 1. Inspeção Didática de Rubricas
+ * 2. Auditoria de Erros ("Descubra o Erro no Holerite")
+ * 3. Desafios de Interpretação e Cálculo Líquido
  */
 
-import { RECEIPT_EXAMPLE_1 } from '../../data/receipt-examples.js';
+import { RECEIPT_EXAMPLE_1, RECEIPT_AUDIT_CASES } from '../../data/receipt-examples.js';
 import { storage } from '../storage.js';
 import { sound, formatCurrency, launchConfetti } from '../utils/helpers.js';
 import { modal } from '../components/modal.js';
@@ -13,9 +16,11 @@ export class ReceiptSimulator {
   constructor(containerId) {
     this.container = document.getElementById(containerId);
     this.receiptData = RECEIPT_EXAMPLE_1;
-    this.currentTab = 'inspector'; // 'inspector' ou 'challenges'
+    this.auditCases = RECEIPT_AUDIT_CASES;
+    this.currentTab = 'inspector'; // 'inspector' | 'audit' | 'challenges'
     this.quizIndex = 0;
     this.quizScore = 0;
+    this.auditIndex = 0;
   }
 
   init() {
@@ -30,27 +35,46 @@ export class ReceiptSimulator {
       <div class="receipt-simulator-wrapper">
         <div class="receipt-header-banner">
           <div class="banner-info">
-            <span class="badge badge-accent">Simulador Didático</span>
-            <h2>🧾 Simulador de Recibo de Pagamento (Holerite)</h2>
-            <p>Toque em qualquer lançamento para descobrir o que significa, como calcular e sua aplicação prática.</p>
+            <span class="badge badge-accent">Simulador de DP</span>
+            <h2 class="simulator-title">🧾 Simulador de Recibo de Pagamento (Holerite)</h2>
+            <p>Explore as rubricas, calcule o salário líquido e descubra erros cometidos na folha de pagamento.</p>
           </div>
           <div class="receipt-tab-switcher">
             <button class="tab-btn ${this.currentTab === 'inspector' ? 'active' : ''}" id="tab-btn-inspector">
               🔍 Explorar Rubricas
             </button>
+            <button class="tab-btn ${this.currentTab === 'audit' ? 'active' : ''}" id="tab-btn-audit">
+              🕵️ Descubra o Erro
+            </button>
             <button class="tab-btn ${this.currentTab === 'challenges' ? 'active' : ''}" id="tab-btn-challenges">
-              🎯 Desafios do Holerite
+              🎯 Desafios
             </button>
           </div>
         </div>
 
-        ${this.currentTab === 'inspector' ? this.renderInspectorView() : this.renderChallengesView()}
+        ${this.renderCurrentView()}
       </div>
     `;
 
     this.attachEvents();
   }
 
+  renderCurrentView() {
+    switch (this.currentTab) {
+      case 'inspector':
+        return this.renderInspectorView();
+      case 'audit':
+        return this.renderAuditView();
+      case 'challenges':
+        return this.renderChallengesView();
+      default:
+        return this.renderInspectorView();
+    }
+  }
+
+  // ==========================================
+  // ABA 1: EXPLORAR RUBRICAS
+  // ==========================================
   renderInspectorView() {
     const data = this.receiptData;
 
@@ -161,6 +185,95 @@ export class ReceiptSimulator {
     `;
   }
 
+  // ==========================================
+  // ABA 2: AUDITORIA DE ERROS NO HOLERITE
+  // ==========================================
+  renderAuditView() {
+    const auditCase = this.auditCases[this.auditIndex];
+    if (!auditCase) {
+      return `
+        <div class="game-card text-center">
+          <div class="finish-icon">🕵️‍♂️🏆</div>
+          <h2>Parabéns, Auditor de RH!</h2>
+          <p>Você resolveu com sucesso todos os casos de auditoria de folha de pagamento!</p>
+          <button class="btn btn-primary" id="btn-restart-audit">Refazer Casos de Auditoria</button>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="audit-view-container">
+        <div class="audit-intro-bar">
+          <span class="badge badge-danger">🕵️ Modo Auditoria</span>
+          <span class="audit-counter">Caso ${this.auditIndex + 1} de ${this.auditCases.length}</span>
+        </div>
+
+        <div class="holerite-paper audit-paper">
+          <div class="audit-alert-strip">
+            ⚠️ <strong>ATENÇÃO:</strong> Este holerite contém erros graves de cálculo e legislação cometidos pelo DP. Analise as linhas abaixo:
+          </div>
+
+          <div class="holerite-employee-bar">
+            <div class="emp-col"><span class="col-lbl">Empregado:</span> <strong>${auditCase.employeeName}</strong></div>
+            <div class="emp-col"><span class="col-lbl">Função:</span> <strong>${auditCase.role}</strong></div>
+            <div class="emp-col"><span class="col-lbl">Salário Base:</span> <strong>${formatCurrency(auditCase.baseSalary)}</strong></div>
+          </div>
+
+          <table class="holerite-table">
+            <thead>
+              <tr>
+                <th>Cód.</th>
+                <th>Descrição</th>
+                <th>Ref.</th>
+                <th>Vencimentos</th>
+                <th>Descontos</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${auditCase.items.map(item => `
+                <tr class="audit-item-row ${item.isError ? 'suspect-error' : ''}">
+                  <td>${item.code}</td>
+                  <td><strong>${item.desc}</strong></td>
+                  <td>${item.ref}</td>
+                  <td class="td-val text-green">${item.provento ? formatCurrency(item.provento) : '-'}</td>
+                  <td class="td-val text-red">${item.desconto ? formatCurrency(item.desconto) : '-'}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="game-card audit-question-card">
+          <h3 class="audit-q-title">🔎 Pergunta de Auditoria:</h3>
+          <p class="audit-q-text">${auditCase.question}</p>
+
+          <div class="quiz-options-list" id="audit-options">
+            ${auditCase.options.map((opt, idx) => `
+              <button class="quiz-option-btn audit-opt-btn" data-index="${idx}">
+                <span class="opt-letter">${String.fromCharCode(65 + idx)}</span>
+                <span class="opt-text">${opt}</span>
+              </button>
+            `).join('')}
+          </div>
+
+          <div class="quiz-feedback-box hidden" id="audit-feedback">
+            <div class="feedback-status" id="audit-feedback-status"></div>
+            <div class="feedback-explanation">
+              <strong>Relatório de Auditoria:</strong>
+              <p id="audit-feedback-text"></p>
+            </div>
+            <div class="feedback-actions">
+              <button class="btn btn-primary" id="btn-next-audit-case">Próximo Caso de Auditoria ➡</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // ==========================================
+  // ABA 3: DESAFIOS DO HOLERITE
+  // ==========================================
   renderChallengesView() {
     const challenges = this.receiptData.challenges;
     const currentQ = challenges[this.quizIndex];
@@ -196,8 +309,13 @@ export class ReceiptSimulator {
 
         <div class="quiz-feedback-box hidden" id="receipt-feedback">
           <div class="feedback-status" id="receipt-feedback-status"></div>
-          <p id="receipt-feedback-expl"></p>
-          <button class="btn btn-primary" id="btn-next-receipt-q">Próximo Desafio ➡</button>
+          <div class="feedback-explanation">
+            <strong>Entendimento Prático:</strong>
+            <p id="receipt-feedback-expl"></p>
+          </div>
+          <div class="feedback-actions">
+            <button class="btn btn-primary" id="btn-next-receipt-q">Próximo Desafio ➡</button>
+          </div>
         </div>
       </div>
     `;
@@ -207,11 +325,19 @@ export class ReceiptSimulator {
     // Alternar abas
     document.getElementById('tab-btn-inspector')?.addEventListener('click', () => {
       this.currentTab = 'inspector';
+      sound.playClick();
+      this.render();
+    });
+
+    document.getElementById('tab-btn-audit')?.addEventListener('click', () => {
+      this.currentTab = 'audit';
+      sound.playClick();
       this.render();
     });
 
     document.getElementById('tab-btn-challenges')?.addEventListener('click', () => {
       this.currentTab = 'challenges';
+      sound.playClick();
       this.render();
     });
 
@@ -246,13 +372,30 @@ export class ReceiptSimulator {
       this.quizScore = 0;
       this.render();
     });
+
+    // Auditoria de Erros
+    const auditBtns = document.querySelectorAll('.audit-opt-btn');
+    auditBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const idx = parseInt(btn.getAttribute('data-index'));
+        this.handleAuditAnswer(idx, btn);
+      });
+    });
+
+    document.getElementById('btn-next-audit-case')?.addEventListener('click', () => {
+      this.auditIndex++;
+      this.render();
+    });
+
+    document.getElementById('btn-restart-audit')?.addEventListener('click', () => {
+      this.auditIndex = 0;
+      this.render();
+    });
   }
 
   showItemModal(item) {
     sound.playClick();
     const d = item.details;
-
-    // Registra estatística de exploração
     storage.incrementStat('receiptExplored', 1);
 
     modal.show({
@@ -284,7 +427,7 @@ export class ReceiptSimulator {
           </div>
         </div>
       `,
-      footerText: 'Fechar e Voltar ao Holerite',
+      footerText: 'Voltar ao Holerite',
       type: 'info'
     });
   }
@@ -308,8 +451,9 @@ export class ReceiptSimulator {
       sound.playSuccess();
       launchConfetti();
       this.quizScore++;
-      statusEl.innerHTML = '<span class="status-badge success">✅ Correto! (+25 XP)</span>';
+      statusEl.innerHTML = '<span class="status-badge success">✅ Correto! (+25 XP e 💎 +10)</span>';
       storage.addXP(25);
+      storage.addGems(10);
       storage.incrementStat('receiptQuizScore', 1);
       updateHeaderUI();
     } else {
@@ -319,6 +463,39 @@ export class ReceiptSimulator {
     }
 
     explEl.textContent = currentQ.explanation;
-    feedbackBox.classList.remove('hidden');
+    feedbackBox?.classList.remove('hidden');
+  }
+
+  handleAuditAnswer(selectedIdx, clickedBtn) {
+    const auditCase = this.auditCases[this.auditIndex];
+    const isCorrect = selectedIdx === auditCase.correctIndex;
+
+    const allBtns = document.querySelectorAll('.audit-opt-btn');
+    allBtns.forEach((btn, idx) => {
+      btn.disabled = true;
+      if (idx === auditCase.correctIndex) btn.classList.add('correct');
+    });
+
+    const feedbackBox = document.getElementById('audit-feedback');
+    const statusEl = document.getElementById('audit-feedback-status');
+    const textEl = document.getElementById('audit-feedback-text');
+
+    if (isCorrect) {
+      clickedBtn.classList.add('correct');
+      sound.playSuccess();
+      launchConfetti();
+      statusEl.innerHTML = `<span class="status-badge success">🎉 Excelente Auditoria! (+${auditCase.xpReward} XP e 💎 +${auditCase.gemsReward})</span>`;
+      storage.addXP(auditCase.xpReward);
+      storage.addGems(auditCase.gemsReward);
+      storage.incrementStat('auditCasesSolved', 1);
+      updateHeaderUI();
+    } else {
+      clickedBtn.classList.add('wrong');
+      sound.playError();
+      statusEl.innerHTML = '<span class="status-badge error">❌ Falha na Auditoria! Veja os erros reais:</span>';
+    }
+
+    textEl.textContent = auditCase.explanation;
+    feedbackBox?.classList.remove('hidden');
   }
 }

@@ -1,31 +1,37 @@
 /**
- * MUNDO RH - Responsividade Completa e Ajustes de Acessibilidade
+ * MUNDO RH - Responsividade Completa e Ajustes Mobile (Academix UI)
  */
 
 /* ==========================================
-   TABLETS E TELAS INTERMEDIÁRIAS (<= 992px)
+   DESKTOPS E LAPTOPS (>= 1024px)
+   ========================================== */
+@media (min-width: 1024px) {
+  .bottom-floating-nav {
+    display: none; /* Em telas grandes, a barra lateral e o header já cobrem a navegação */
+  }
+
+  body {
+    padding-bottom: 0;
+  }
+}
+
+/* ==========================================
+   TABLETS E TELAS MÉDIAS (<= 992px)
    ========================================== */
 @media (max-width: 992px) {
-  .home-hero-banner {
-    grid-template-columns: 1fr;
-    padding: 2rem 1.5rem;
-    gap: 1.5rem;
+  .academix-stats-grid {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .home-highlight-card {
-    flex-direction: column;
-    text-align: center;
-    padding: 1.5rem;
-    gap: 1rem;
+  .phase-stepper-container {
+    overflow-x: auto;
+    display: flex;
+    padding: 0.35rem;
   }
 
-  .home-highlight-card .highlight-btn {
-    width: 100%;
-  }
-
-  .profile-hero-card {
-    flex-direction: column;
-    text-align: center;
+  .stepper-tab {
+    flex-shrink: 0;
+    padding: 0.5rem 0.85rem;
   }
 
   .matching-columns-container {
@@ -38,83 +44,103 @@
    ========================================== */
 @media (max-width: 640px) {
   html {
-    font-size: 15px;
+    font-size: 14.5px;
   }
 
   .main-wrapper {
-    padding: 1rem 0.75rem 2.5rem 0.75rem;
+    padding: 1rem 0.75rem 5.5rem 0.75rem;
   }
 
   .app-header {
-    padding: 0.6rem 0.75rem;
+    padding: 0.65rem 0.85rem;
   }
 
-  .header-level-container {
-    display: none; /* Simplifica o topo em telas estreitas */
+  .header-level-pill {
+    display: none; /* Simplifica o topo em celulares */
   }
 
-  .hero-title {
-    font-size: 1.6rem;
-  }
-
-  .hero-actions {
+  .academix-profile-hero {
     flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1rem;
   }
 
-  .hero-actions .btn {
-    width: 100%;
+  .hero-avatar-box {
+    width: 64px;
+    height: 64px;
+    font-size: 2rem;
   }
 
-  .worlds-compact-grid, .worlds-full-grid {
-    grid-template-columns: 1fr;
+  .hero-xp-gems {
+    justify-content: center;
   }
 
-  .games-menu-grid {
-    grid-template-columns: 1fr;
+  .academix-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
   }
 
-  /* Caça-palavras no Celular: Células Confortáveis */
-  .word-search-grid {
-    gap: 2px;
-    padding: 4px;
-  }
-
-  .ws-cell {
-    font-size: 0.85rem;
-    border-radius: 4px;
-    min-width: 28px;
-    min-height: 28px;
-  }
-
-  /* Teclado Virtual no Celular */
-  .key-btn {
-    padding: 0.5rem 0.4rem;
-    min-width: 26px;
-    font-size: 0.8rem;
-  }
-
-  .letter-slot {
-    width: 28px;
-    height: 40px;
-    font-size: 1.1rem;
-  }
-
-  /* Verdadeiro ou Falso */
-  .tf-actions-row {
-    flex-direction: column;
-  }
-
-  .tf-btn {
-    width: 100%;
+  .academix-stat-card {
     padding: 1rem;
   }
 
-  /* Desafio Relâmpago */
-  .blitz-options-grid {
-    grid-template-columns: 1fr;
+  .stat-big-number {
+    font-size: 1.8rem;
   }
 
-  /* Holerite em Telas Pequenas */
+  .streak-days-row {
+    gap: 0.25rem;
+  }
+
+  .day-check-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .day-label {
+    font-size: 0.75rem;
+  }
+
+  .phase-timeline-card {
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+
+  .phase-number-badge {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+
+  /* Stepper de 5 Etapas no Celular */
+  .phase-stepper-container {
+    overflow-x: auto;
+    display: flex;
+    gap: 0.35rem;
+    border-radius: var(--border-radius-md);
+  }
+
+  .stepper-tab {
+    flex-shrink: 0;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.75rem;
+  }
+
+  .step-card {
+    padding: 1.25rem;
+  }
+
+  .calc-problem-box {
+    flex-direction: column;
+  }
+
+  .final-q-text {
+    font-size: 1rem;
+  }
+
+  /* Holerite no Celular */
   .holerite-paper {
     padding: 1rem 0.75rem;
   }
@@ -122,7 +148,6 @@
   .holerite-header-grid {
     flex-direction: column;
     gap: 0.5rem;
-    text-align: left;
   }
 
   .holerite-doc-title {
@@ -144,20 +169,20 @@
     padding: 0.75rem;
   }
 
-  .stats-cards-grid {
+  .holerite-bases-grid {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 /* ==========================================
-   ALVOS DE TOQUE MÍNIMOS (ACESSIBILIDADE MOBILE)
+   ACESSIBILIDADE E ALVOS DE TOQUE MÍNIMOS
    ========================================== */
-button, .nav-link, .ws-cell, .match-item-btn, .quiz-option-btn {
-  min-height: 44px; /* Garante área de toque confortável segundo normas WCAG */
+button, .nav-link, .bnav-btn, .quiz-option-btn, .match-item-btn {
+  min-height: 44px; /* Atende WCAG para toque mobile */
 }
 
 /* ==========================================
-   PREFERÊNCIA POR MOVIMENTO REDUZIDO
+   MOVIMENTO REDUZIDO
    ========================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
