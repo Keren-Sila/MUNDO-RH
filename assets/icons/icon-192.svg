@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="192" height="192">
+  <defs>
+    <linearGradient id="bgGrad192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="accentGrad192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="goldGrad192" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" rx="100" fill="url(#bgGrad192)" />
+  <circle cx="256" cy="256" r="210" fill="none" stroke="url(#accentGrad192)" stroke-width="12" opacity="0.4" />
+  
+  <path d="M160 380 V 200 H 270 V 380 Z" fill="#334155" opacity="0.8" />
+  <path d="M250 380 V 150 H 360 V 380 Z" fill="#1e293b" />
+
+  <circle cx="210" cy="330" r="20" fill="url(#goldGrad192)" />
+  <path d="M185 380 C 185 355, 235 355, 235 380 Z" fill="url(#goldGrad192)" />
+
+  <circle cx="290" cy="320" r="22" fill="#38bdf8" />
+  <path d="M260 380 C 260 350, 320 350, 320 380 Z" fill="#38bdf8" />
+
+  <path d="M 256 95 L 340 135 L 256 175 L 172 135 Z" fill="url(#goldGrad192)" />
+
+  <text x="256" y="445" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="900" fill="#f8fafc" text-anchor="middle" letter-spacing="2">MUNDO RH</text>
+</svg>

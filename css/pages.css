@@ -1,0 +1,1011 @@
+/**
+ * MUNDO RH - Estilos Específicos das Páginas e Visual do Holerite
+ */
+
+/* ==========================================
+   PÁGINA INICIAL (HOME)
+   ========================================== */
+.home-hero-banner {
+  background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-xl);
+  padding: 2.5rem 2rem;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-hero-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary-light);
+  background-color: var(--color-primary-subtle);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+}
+
+.hero-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.mini-status-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.mini-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.mini-level span {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================================
+   MISSÕES DIÁRIAS (DAILY MISSIONS)
+   ========================================== */
+.daily-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.daily-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.daily-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.daily-icon {
+  font-size: 1.4rem;
+}
+
+.daily-tag {
+  font-size: 0.75rem;
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+.missions-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.mission-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background-color: var(--bg-surface-elevated);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.mission-item.done {
+  border-color: var(--color-success);
+  background-color: rgba(16, 185, 129, 0.08);
+}
+
+.mission-text strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.mission-text p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.mission-xp {
+  margin-left: auto;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-warning);
+}
+
+/* ==========================================
+   DESTAQUE SIMULADOR (HIGHLIGHT CARD)
+   ========================================== */
+.home-highlight-card {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+  border: 1.5px solid rgba(6, 182, 212, 0.4);
+  border-radius: var(--border-radius-xl);
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2.5rem;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.home-highlight-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.highlight-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.highlight-body {
+  flex: 1;
+}
+
+.highlight-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-info);
+  margin-bottom: 0.35rem;
+}
+
+.highlight-body h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.4rem;
+}
+
+.highlight-body p {
+  font-size: 0.95rem;
+}
+
+/* ==========================================
+   GRADE DE MUNDOS (WORLDS GRID)
+   ========================================== */
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.section-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.worlds-compact-grid, .worlds-full-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.world-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.world-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.world-card.locked {
+  opacity: 0.7;
+}
+
+.world-card-top {
+  padding: 1.5rem;
+  color: #ffffff;
+  position: relative;
+}
+
+.world-badge {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4px);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  margin-bottom: 0.5rem;
+}
+
+.world-number {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+}
+
+.world-card-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.world-card-sub {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  color: #e2e8f0;
+}
+
+.world-card-body {
+  padding: 1.25rem;
+  flex: 1;
+}
+
+.world-desc {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.world-topics-summary strong {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.world-topics-summary ul {
+  list-style: none;
+  margin-top: 0.35rem;
+}
+
+.world-topics-summary li {
+  font-size: 0.8rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+
+.world-card-footer {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-surface-elevated);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.lock-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-warning);
+}
+
+/* ==========================================
+   MENU DE JOGOS RÁPIDOS
+   ========================================== */
+.games-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.game-menu-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.game-menu-item:hover {
+  border-color: var(--color-primary-light);
+  background-color: var(--bg-surface-elevated);
+  transform: translateY(-3px);
+}
+
+.menu-item-icon {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.game-menu-item h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.35rem;
+}
+
+.game-menu-item p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================
+   SIMULADOR DE RECIBO (HOLERITE INTERATIVO)
+   ========================================== */
+.receipt-header-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.receipt-tab-switcher {
+  display: flex;
+  gap: 0.5rem;
+  background-color: var(--bg-surface);
+  padding: 0.35rem;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-light);
+  transition: all var(--transition-fast);
+}
+
+.tab-btn.active {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Estilo Papel de Holerite Realista */
+.holerite-paper {
+  background-color: #ffffff;
+  color: #1e293b;
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-xl);
+  border: 2px solid #cbd5e1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.holerite-header-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #0f172a;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.company-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.company-sub {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.holerite-doc-title {
+  text-align: right;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #0f172a;
+}
+
+.competency-badge {
+  display: block;
+  font-size: 0.8rem;
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.holerite-employee-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 0.6rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.emp-col .col-lbl {
+  color: #64748b;
+  margin-right: 0.25rem;
+}
+
+.emp-col strong {
+  color: #0f172a;
+}
+
+.holerite-table-container {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.holerite-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.holerite-table th {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  padding: 0.6rem 0.5rem;
+  text-align: left;
+  border: 1px solid #cbd5e1;
+  font-weight: 700;
+}
+
+.holerite-table td {
+  padding: 0.55rem 0.5rem;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+}
+
+.holerite-row {
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.holerite-row:hover {
+  background-color: #f0fdf4;
+}
+
+.holerite-row.desconto:hover {
+  background-color: #fef2f2;
+}
+
+.td-code {
+  font-weight: 700;
+  width: 50px;
+}
+
+.td-val {
+  text-align: right;
+  font-weight: 600;
+  width: 120px;
+}
+
+.text-green { color: #047857 !important; }
+.text-red { color: #b91c1c !important; }
+.text-blue { color: #1d4ed8 !important; }
+
+.btn-inspect-row {
+  font-size: 0.75rem;
+  background-color: #e0f2fe;
+  color: #0369a1;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  border: 1px solid #bae6fd;
+}
+
+.btn-inspect-row:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+.tag-info {
+  font-size: 0.65rem;
+  background-color: #e2e8f0;
+  color: #475569;
+  padding: 0.1rem 0.4rem;
+  border-radius: 9999px;
+  margin-left: 0.5rem;
+}
+
+.holerite-totals-container {
+  border: 2px solid #0f172a;
+  background-color: #f8fafc;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.totals-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.total-block {
+  text-align: center;
+}
+
+.total-lbl {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.total-val {
+  font-size: 1.15rem;
+}
+
+.liquid-highlight {
+  background-color: #dbeafe;
+  padding: 0.5rem 1.25rem;
+  border-radius: 6px;
+  border: 1.5px solid #3b82f6;
+}
+
+.liquid-highlight .total-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.holerite-bases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.5rem;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.base-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.base-lbl {
+  color: #64748b;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+}
+
+.base-val {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Modal do Lançamento do Holerite */
+.receipt-modal-badge {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.receipt-modal-badge.provento {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+
+.receipt-modal-badge.desconto {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger);
+}
+
+.receipt-modal-badge.informativo {
+  background-color: var(--color-info-bg);
+  color: var(--color-info);
+  border: 1px solid var(--color-info);
+}
+
+.modal-section {
+  margin-bottom: 1rem;
+}
+
+.modal-section h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-main);
+}
+
+.calc-box {
+  background-color: var(--bg-surface-elevated);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--border-radius-sm);
+  font-size: 0.85rem;
+  color: var(--color-warning);
+}
+
+.highlight-box {
+  background-color: rgba(37, 99, 235, 0.1);
+  border-left: 3px solid var(--color-primary);
+  padding: 0.75rem 1rem;
+  border-radius: 0 var(--border-radius-sm) var(--border-radius-sm) 0;
+}
+
+/* ==========================================
+   REVISÃO INTELIGENTE (FLASHCARDS)
+   ========================================== */
+.review-card-container {
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+  margin: 2rem 0;
+}
+
+.flashcard {
+  width: 100%;
+  max-width: 520px;
+  min-height: 320px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-xl);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--shadow-xl);
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+  background-color: var(--bg-surface-elevated);
+}
+
+.flashcard-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-warning);
+  margin-bottom: 1rem;
+}
+
+.flashcard-title {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.flashcard-hint {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.flashcard-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* ==========================================
+   PAINEL DE CONQUISTAS (ACHIEVEMENTS)
+   ========================================== */
+.profile-hero-card {
+  background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: var(--border-radius-xl);
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.profile-avatar {
+  font-size: 3.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-level-badge {
+  display: inline-block;
+  background-color: var(--color-warning);
+  color: var(--text-inverse);
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  margin-bottom: 0.35rem;
+}
+
+.profile-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.profile-streak {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+.stats-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.stat-number {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-primary-light);
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.badge-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1.25rem;
+  transition: all var(--transition-fast);
+}
+
+.badge-card.unlocked {
+  border-color: var(--color-warning);
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(245, 158, 11, 0.08) 100%);
+}
+
+.badge-card.locked {
+  opacity: 0.5;
+}
+
+.badge-icon-box {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid;
+  background-color: var(--bg-surface-elevated);
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.badge-title {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.badge-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.badge-reward {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--color-warning);
+}
+
+/* ==========================================
+   GLOSSÁRIO DE RH
+   ========================================== */
+.glossary-filter-bar {
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  color: var(--text-main);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-input:focus {
+  border-color: var(--color-primary-light);
+}
+
+.filter-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-pill {
+  padding: 0.4rem 0.85rem;
+  border-radius: 9999px;
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.filter-pill.active {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary-light);
+}
+
+.glossary-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+
+.glossary-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.glossary-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.glossary-term {
+  font-size: 1.2rem;
+  color: var(--color-primary-light);
+}
+
+.glossary-tag {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-muted);
+}
+
+.glossary-tag.provento {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.glossary-tag.desconto {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+}
+
+.glossary-short {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+}
+
+.glossary-details {
+  border-top: 1px solid var(--border-color);
+  padding-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  font-size: 0.82rem;
+}
+
+.glossary-block strong {
+  display: block;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  margin-bottom: 0.15rem;
+}
+
+.glossary-block.highlight {
+  background-color: rgba(37, 99, 235, 0.08);
+  padding: 0.5rem;
+  border-radius: 4px;
+}
